@@ -1,13 +1,10 @@
+const Button = ({ column , openModal }: { column: string , openModal: () => void}) => {
+  return (
+    <button className="mt-4 w-full bg-white text-blue-500 py-2 px-4 rounded transition duration-300" onClick={openModal}
+    >
+      +
+    </button>
+  );
+};
 
-
-export default function Button() {
-    return (
-        <div className="flex justify-between items-center mb-6 align-right">
-            <button
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            >
-                Add Task
-            </button>
-        </div>
-    );
-}
+export default Button;

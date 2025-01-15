@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import NavBar from "@/app/layouts/navigation";
 
 
 export default function RootLayout({
@@ -9,8 +10,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        {children}
+      <body className="bg-gray-300">
+        <NavBar/>
+        <div className="px-10">
+            {children}
+        </div>
       </body>
     </html>
   );
