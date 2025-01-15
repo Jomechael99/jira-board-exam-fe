@@ -39,7 +39,6 @@ const TaskCard = ({ task }: { task: Task }) => {
   }
 
   const handleUpdate = (updatedTask: Task) => {
-    // Update the task in the parent component or state
   };
 
 

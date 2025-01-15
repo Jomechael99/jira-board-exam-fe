@@ -18,10 +18,9 @@ const ButtonModal = ({
   const [isRequired, setIsRequired] = useState(false);
 
   const columnToIdMap: { [key: string]: number } = {
-    'Todo': 1,
-    'Ready to do': 2,
-    'In progress': 3,
-    'Done': 4,
+    'Backlog': 1,
+    'In progress': 2,
+    'Done': 3,
   };
 
   const handleSubmit = async (event: any) => {

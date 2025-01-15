@@ -16,10 +16,9 @@ type Task = {
 
 type TasksByStatus = {
   [key: string]: Task[];
-  Todo: Task[];
-  'Ready to do': Task[];
+  'Backlog': Task[];
   'In progress': Task[];
-  Done: Task[];
+  'Done': Task[];
 };
 
 const ItemTypes = {
@@ -28,10 +27,9 @@ const ItemTypes = {
 
 const Board = () => {
   const [tasks, setTasks] = useState<TasksByStatus>({
-    Todo: [],
-    'Ready to do': [],
+    'Backlog': [],
     'In progress': [],
-    Done: [],
+    'Done': [],
   });
 
   const url = process.env.NEXT_PUBLIC_API_URL;
@@ -41,20 +39,17 @@ const Board = () => {
       try {
         const response = await axios.get(url + 'api/v1/task');
         const tasksByStatus: TasksByStatus = {
-          Todo: [],
-          'Ready to do': [],
+          'Backlog': [],
           'In progress': [],
-          Done: [],
+           'Done': [],
         };
 
         Object.values(response.data.data).forEach((task: any) => {
           if (task.status.id === 1) {
-            tasksByStatus['Todo'].push(task);
+            tasksByStatus['Backlog'].push(task);
           } else if (task.status.id === 2) {
-            tasksByStatus['Ready to do'].push(task);
-          } else if (task.status.id === 3) {
             tasksByStatus['In progress'].push(task);
-          } else if (task.status.id === 4) {
+          } else if (task.status.id === 3) {
             tasksByStatus['Done'].push(task);
           }
         });
@@ -220,10 +215,9 @@ const Column = ({
 };
 
 const columnToIdMap: { [key: string]: number } = {
-  Todo: 1,
-  'Ready to do': 2,
-  'In progress': 3,
-  Done: 4,
+  'Backlog': 1,
+  'In progress': 2,
+  'Done': 3,
 };
 
 export default Board;

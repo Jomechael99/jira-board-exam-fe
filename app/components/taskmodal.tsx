@@ -23,7 +23,7 @@ const TaskModal = ({ task, isOpen, onClose, onUpdate }: TaskModalProps) => {
 
   useEffect(() => {
     if (task) {
-      setStatusId(task.status_id);
+      setStatusId(task.status.id);
       setDescription(task.description);
     }
   }, [task]);
@@ -94,15 +94,14 @@ const TaskModal = ({ task, isOpen, onClose, onUpdate }: TaskModalProps) => {
             <span className="label-text text-lg font-bold">Status</span>
           </div>
           <select
-            value={statusId}
+            defaultValue={task.status.id}
             onChange={handleStatusChange}
             className="select select-bordered w-full max-w-xs"
           >
-            <option value={0} disabled selected>Please select option</option>
-            <option value={1}>Todo</option>
-            <option value={2}>Ready to do</option>
-            <option value={3}>In progress</option>
-            <option value={4}>Done</option>
+            <option value={0} disabled>Please select option</option>
+            <option value={1}>Backlog</option>
+            <option value={2}>In progress</option>
+            <option value={3}>Done</option>
           </select>
         </label>
         <div className="modal-action">
